@@ -40,6 +40,7 @@ var create = function(){
 
   Nakama.background = Nakama.game.add.sprite(0, -960, 'background');
   Nakama.player = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship2Right-Player.png');
+  Nakama.player2 = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship2Left-Partner.png');
 }
 
 // update game state each frame
@@ -57,6 +58,21 @@ var update = function(){
   }
   if(Nakama.keyboard.isDown(Phaser.Keyboard.UP)){
     Nakama.player.position.y = Math.max( 0, Nakama.player.position.y - 10);
+  }
+
+  if(Nakama.keyboard.isDown(Phaser.Keyboard.A)){
+    Nakama.player2.position.x = Math.max( 0, Nakama.player2.position.x - 10);
+  }
+  if(Nakama.keyboard.isDown(Phaser.Keyboard.D)){
+    //console(Nakama.player.position.y);
+    Nakama.player2.position.x = Math.min( Nakama.configs.GAME_WIDTH - Nakama.player2.width, Nakama.player2.position.x + 10);
+  }
+  if(Nakama.keyboard.isDown(Phaser.Keyboard.S)){
+    //console(Nakama.player.position.y);
+    Nakama.player2.position.y = Math.min( Nakama.configs.GAME_HEIGHT - Nakama.player2.height, Nakama.player2.position.y + 10);
+  }
+  if(Nakama.keyboard.isDown(Phaser.Keyboard.W)){
+    Nakama.player2.position.y = Math.max( 0, Nakama.player2.position.y - 10);
   }
 
   Nakama.background.position.y += 10;
