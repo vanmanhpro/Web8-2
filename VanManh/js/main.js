@@ -1,3 +1,4 @@
+
 var Nakama = {};
 Nakama.configs = {
   GAME_WIDTH: 640,
@@ -40,12 +41,12 @@ var create = function(){
 
   Nakama.background = Nakama.game.add.sprite(0, -960, 'background');
   Nakama.player = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship2Right-Player.png');
-  Nakama.player2 = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship2Left-Partner.png');
+  Nakama.partner = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship2Left-Partner.png');
 }
 
 // update game state each frame
 var update = function(){
-  if(Nakama.keyboard.isDown(Phaser.Keyboard.LEFT)){
+  /*if(Nakama.keyboard.isDown(Phaser.Keyboard.LEFT)){
     Nakama.player.position.x = Math.max( 0, Nakama.player.position.x - 10);
   }
   if(Nakama.keyboard.isDown(Phaser.Keyboard.RIGHT)){
@@ -61,22 +62,22 @@ var update = function(){
   }
 
   if(Nakama.keyboard.isDown(Phaser.Keyboard.A)){
-    Nakama.player2.position.x = Math.max( 0, Nakama.player2.position.x - 10);
+    Nakama.partner.position.x = Math.max( 0, Nakama.partner.position.x - 10);
   }
   if(Nakama.keyboard.isDown(Phaser.Keyboard.D)){
     //console(Nakama.player.position.y);
-    Nakama.player2.position.x = Math.min( Nakama.configs.GAME_WIDTH - Nakama.player2.width, Nakama.player2.position.x + 10);
+    Nakama.partner.position.x = Math.min( Nakama.configs.GAME_WIDTH - Nakama.partner.width, Nakama.partner.position.x + 10);
   }
   if(Nakama.keyboard.isDown(Phaser.Keyboard.S)){
     //console(Nakama.player.position.y);
-    Nakama.player2.position.y = Math.min( Nakama.configs.GAME_HEIGHT - Nakama.player2.height, Nakama.player2.position.y + 10);
+    Nakama.partner.position.y = Math.min( Nakama.configs.GAME_HEIGHT - Nakama.partner.height, Nakama.partner.position.y + 10);
   }
   if(Nakama.keyboard.isDown(Phaser.Keyboard.W)){
-    Nakama.player2.position.y = Math.max( 0, Nakama.player2.position.y - 10);
+    Nakama.partner.position.y = Math.max( 0, Nakama.partner.position.y - 10);
   }
 
-  Nakama.background.position.y += 10;
-  if (Nakama.background.position.y > 0) Nakama.background.position.y -= 960;
+  Nakama.background.position.y += 5;
+  if (Nakama.background.position.y > 0) Nakama.background.position.y -= 960;*/
 }
 
 // before camera render (mostly for debug)
