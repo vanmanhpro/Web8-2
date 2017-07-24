@@ -46,7 +46,7 @@ var create = function(){
 
 // update game state each frame
 var update = function(){
-  /*if(Nakama.keyboard.isDown(Phaser.Keyboard.LEFT)){
+  if(Nakama.keyboard.isDown(Phaser.Keyboard.LEFT)){
     Nakama.player.position.x = Math.max( 0, Nakama.player.position.x - 10);
   }
   if(Nakama.keyboard.isDown(Phaser.Keyboard.RIGHT)){
@@ -77,7 +77,7 @@ var update = function(){
   }
 
   Nakama.background.position.y += 5;
-  if (Nakama.background.position.y > 0) Nakama.background.position.y -= 960;*/
+  if (Nakama.background.position.y > 0) Nakama.background.position.y -= 960;
 }
 
 // before camera render (mostly for debug)
