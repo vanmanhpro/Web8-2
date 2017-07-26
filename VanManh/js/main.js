@@ -40,14 +40,21 @@ var create = function(){
   Nakama.keyboard = Nakama.game.input.keyboard;
 
   Nakama.background = Nakama.game.add.sprite(0, -960, 'background');
-  Nakama.player = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship2Right-Player.png');
-  Nakama.partner = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship2Left-Partner.png');
+  Nakama.player = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship1-Player.png');
+  Nakama.playerLeft = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship1Left-Player.png');
+  Nakama.playerRight = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship1Right-Player.png');
+  Nakama.partner = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship1-Partner.png');
+  Nakama.partnerLeft = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship1Left-Partner.png');
+  Nakama.partnerRight = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship1Right-Partner.png');
+  Nakama.sidekick = Nakama.game.add.sprite(200, 400, 'assets', 'Spaceship2-Player.png');
 }
 
 // update game state each frame
 var update = function(){
+  // player
   if(Nakama.keyboard.isDown(Phaser.Keyboard.LEFT)){
     Nakama.player.position.x = Math.max( 0, Nakama.player.position.x - 10);
+    Nakama.playerLeft.position = Nakama.player.position;
   }
   if(Nakama.keyboard.isDown(Phaser.Keyboard.RIGHT)){
     //console(Nakama.player.position.y);
@@ -61,6 +68,7 @@ var update = function(){
     Nakama.player.position.y = Math.max( 0, Nakama.player.position.y - 10);
   }
 
+  //partner
   if(Nakama.keyboard.isDown(Phaser.Keyboard.A)){
     Nakama.partner.position.x = Math.max( 0, Nakama.partner.position.x - 10);
   }
@@ -76,6 +84,23 @@ var update = function(){
     Nakama.partner.position.y = Math.max( 0, Nakama.partner.position.y - 10);
   }
 
+  //sidekick
+  if(Nakama.keyboard.isDown(Phaser.Keyboard.NUMPAD_1)){
+    Nakama.sidekick.position.x = Math.max( 0, Nakama.sidekick.position.x - 10);
+  }
+  if(Nakama.keyboard.isDown(Phaser.Keyboard.NUMPAD_3)){
+    //console(Nakama.sidekick.position.y);
+    Nakama.sidekick.position.x = Math.min( Nakama.configs.GAME_WIDTH - Nakama.sidekick.width, Nakama.sidekick.position.x + 10);
+  }
+  if(Nakama.keyboard.isDown(Phaser.Keyboard.NUMPAD_2)){
+    //console(Nakama.sidekick.position.y);
+    Nakama.sidekick.position.y = Math.min( Nakama.configs.GAME_HEIGHT - Nakama.sidekick.height, Nakama.sidekick.position.y + 10);
+  }
+  if(Nakama.keyboard.isDown(Phaser.Keyboard.NUMPAD_5)){
+    Nakama.sidekick.position.y = Math.max( 0, Nakama.sidekick.position.y - 10);
+  }
+
+  //roll the map
   Nakama.background.position.y += 5;
   if (Nakama.background.position.y > 0) Nakama.background.position.y -= 960;
 }
